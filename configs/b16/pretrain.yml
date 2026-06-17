@@ -1,0 +1,45 @@
+model:
+    cls: MMJiT_B_16_txt2
+
+dataset:
+    use_cc12m: True
+    llm: google/flan-t5-large
+    num_workers: 8
+    image_size: 512
+    prompt_length: 256
+
+training:
+    optimizer: 'adam'
+    adam:
+        learning_rate: 0.0004
+        adam_b2: 0.95
+    num_steps: 250000
+    warmup_steps: 5000
+    batch_size: 1024
+    log_per_step: 100
+    checkpoint_per_step: 10000
+    sample_per_step: 10000
+    log_vis_per_step: 5000
+    eval_per_step: -1
+    ema_type: 'const'
+    ema_vals: [0.99995]
+    seed: 42
+
+eval:
+    on_training: False
+    device_batch_size: 64
+    cfg_scale: 2.0
+
+sampling:
+    n_T: 100
+    prediction: x
+    a_min: 0.01
+    t_sample_schedule: lognorm
+    t_lognorm_mu: -0.8
+    t_lognorm_sigma: 0.8
+    noise_scale: 2.0
+    label_drop_rate: 0.1
+
+eval_only: False
+eval_show_sample: True
+sharding: hsdp
