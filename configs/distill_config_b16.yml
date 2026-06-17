@@ -1,0 +1,62 @@
+model:
+    cls: MMJiT_B_16_txt2
+
+dataset:
+    use_cc12m: True
+    use_blip3_ft60k: False
+    use_dalle3: False
+    use_sharegpt4o: False
+    mix_weights: [1.0]
+    llm: google/flan-t5-large
+    num_workers: 8
+    image_size: 512
+    prompt_length: 256
+
+training:
+    optimizer: 'muon'
+    adam:
+        learning_rate: 0.0001
+        adam_b2: 0.95
+    muon:
+        learning_rate: 0.001
+    num_steps: 50000
+    warmup_steps: 5000
+    batch_size: 1024
+    log_per_step: 100
+    checkpoint_per_step: 10000
+    sample_per_step: 5000
+    log_vis_per_step: 5000
+    eval_per_step: -1
+    ema_type: 'edm'
+    ema_vals: [2000]
+    seed: 42
+
+eval:
+    on_training: False
+    cfg_scale: 12.0
+    num_steps: 4
+    t_min: 0.2
+    t_max: 0.8
+    device_batch_size: 64
+
+sampling:
+    seed: 0
+
+sampling_pmf:
+    P_mean: 0.8
+    P_std: 0.8
+    noise_scale: 2.0
+    cfg_beta: 1.0
+    cfg_max: 12.0
+    data_proportion: 0.5
+    norm_p: 1.0
+    norm_eps: 0.01
+    adapt_weight: True
+
+eval_only: False
+eval_show_sample: True
+mean_flow_distill: True
+load_from: ""      # Optional student checkpoint for resume.
+load_pt_from: ""   # Required diffusion teacher checkpoint for fresh distillation.
+student_from_scratch: False
+sharding: hsdp

@@ -1,0 +1,55 @@
+model:
+    cls: MMJiT_B_16_txt2
+
+dataset:
+    use_cc12m: False
+    use_blip3_ft60k: False
+    use_dalle3: False
+    use_sharegpt4o: False
+    llm: google/flan-t5-large
+    num_workers: 8
+    image_size: 512
+    prompt_length: 256
+
+training:
+    batch_size: 1024
+    ema_type: 'edm'
+    ema_vals: [2000]
+
+eval:
+    on_training: False
+    num_samples: 30000
+    cfg_scale: 12.0
+    include_ema: False
+    num_steps: 4
+    t_min: 0.2
+    t_max: 0.8
+    device_batch_size: 64
+    mjhq:
+        enable: False
+    mscoco:
+        enable: False
+    geneval:
+        enable: True
+        jax:
+            batch_size: 16
+    dpgbench:
+        enable: True
+        batch_size: 128
+
+sampling:
+    seed: 0
+
+sampling_pmf:
+    P_mean: 0.8
+    P_std: 0.8
+    noise_scale: 2.0
+    cfg_beta: 1.0
+    cfg_max: 12.0
+
+eval_only: True
+eval_show_sample: True
+mean_flow_distill: True
+load_from: ""      # Required MF student checkpoint for evaluation.
+load_pt_from: ""   # Usually empty for eval; teacher params are not needed.
+sharding: hsdp
