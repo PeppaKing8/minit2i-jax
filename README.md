@@ -5,7 +5,7 @@
 <h2 align="center">MiniT2I: A Minimalist Baseline for Text-to-Image Generation</h2>
 
 <p align="center">
-  <a href="https://peppaking8.github.io/#/post/text-to-image-generation-made-simple"><img src="https://img.shields.io/badge/Blog-MiniT2I-2ea44f.svg" alt="MiniT2I blog post" /></a>
+  <a href="https://peppaking8.github.io/#/post/minit2i"><img src="https://img.shields.io/badge/Blog-MiniT2I-2ea44f.svg" alt="MiniT2I blog post" /></a>
   &nbsp;
   <a href="https://huggingface.co/MiniT2I/MiniT2I-B-16-MF-jax"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Checkpoint-B%2F16--MF-yellow.svg" alt="Hugging Face Mean Flow checkpoint" /></a>
   &nbsp;
