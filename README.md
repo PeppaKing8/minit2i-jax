@@ -18,7 +18,7 @@
 
 Official JAX/Flax training implementation of **MiniT2I**.
 
-MiniT2I is a simple direct-RGB text-to-image generator that trains a pixel-space MM-JiT denoiser with flow matching, conditioned on frozen FLAN-T5-Large text tokens. The recipe is intentionally plain: avoiding image tokenizers, cascaded generation, RL stages, and any auxiliary losses. Data used in training MiniT2I is fully public and easy to implement. For more details, please refer to our [blog post](https://peppaking8.github.io/#/post/text-to-image-generation-made-simple).
+MiniT2I is a simple direct-RGB text-to-image generator that trains a pixel-space MM-JiT denoiser with flow matching, conditioned on frozen FLAN-T5-Large text tokens. The recipe is intentionally plain: avoiding image tokenizers, cascaded generation, RL stages, and any auxiliary losses. Data used in training MiniT2I is fully public and easy to implement. For more details, please refer to our [blog post](https://peppaking8.github.io/#/post/minit2i).
 
 This repository contains the original JAX/Flax diffusion training and evaluation code used for MiniT2I. 
 
